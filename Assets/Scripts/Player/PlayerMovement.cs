@@ -3,10 +3,17 @@
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb; // Player's rigidbody.
-    public float speed; // Player's speed of travel.
+    public float initialSpeed; // Player's speed of travel.
     public Camera cam; // Main camera.
     public bool isMoving; // Flag for when player is moving.
+    public Animator animator;
     private Vector2 movement, look; // Movement and looking direction vectors.
+    private float currentSpeed;
+
+    void Start()
+    {
+        currentSpeed = initialSpeed;
+    }
     void Update()
     {
         // For movement.
@@ -35,7 +42,8 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         // Move player.
-        rb.MovePosition(rb.position + movement * speed * Time.deltaTime);
+        //rb.MovePosition(rb.position + movement * speed * Time.deltaTime);
+        rb.AddForce(movement.normalized * currentSpeed * Time.deltaTime);
 
         // Rotate player.
         if (look != Vector2.zero)
@@ -43,5 +51,24 @@ public class PlayerMovement : MonoBehaviour
             float angle = Mathf.Atan2(look.y, look.x) * Mathf.Rad2Deg - 90f;
             rb.MoveRotation(angle);
         }
+    }
+
+    public void SpeedUp(float percent)
+    {
+        animator.SetBool("SpedUp", true);
+        currentSpeed = (1 + percent) * initialSpeed;
+    }
+
+    public void SlowDown(float percent)
+    {
+        animator.SetBool("Slowed", true);
+        currentSpeed = (1 - percent) * initialSpeed;
+    }
+
+    public void ResetSpeed()
+    {
+        animator.SetBool("Slowed", false);
+        animator.SetBool("SpedUp", false);
+        currentSpeed = initialSpeed;
     }
 }

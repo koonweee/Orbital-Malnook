@@ -27,7 +27,7 @@ public class TrailersControl : MonoBehaviour
         }
     }
 
-    void TrailerOn()
+    public void TrailerOn()
     {
         if (isOn) return;
         isOn = true;
@@ -35,7 +35,7 @@ public class TrailersControl : MonoBehaviour
         rightTrailer.Play();
     }
 
-    void TrailerOff()
+    public void TrailerOff()
     {
         if (!isOn) return;
         isOn = false;

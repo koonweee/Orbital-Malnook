@@ -3,27 +3,29 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public HealthBar hpBar;
+    public GameObject hpBarObj;
+    private HealthBar hpBar;
     public Animator animator;
     public ParticleSystem explosion;
+    public GameObject sprite;
+    public TrailersControl trailers;
+    public float knockbackForce;
     public int maxHP, invulTime;
     private int hp;
-    private bool isInvul;
+    private bool isInvul, isDead;
     // Initialize HP Bar and set invuln to false.
     void Start()
     {
+        hpBar = hpBarObj.GetComponent<HealthBar>();
         hpBar.SetMaxHP(maxHP);
         hp = maxHP;
         isInvul = false;
+        isDead = false;
     }
 
     // Updates HP Bar.
     void Update()
     {
-        // FOR TESTING.
-        if (Input.GetMouseButtonDown(1)) Damage(20);
-        if (Input.GetMouseButtonDown(2)) Heal(10);
-
         hpBar.UpdateHP(hp);
     }
 
@@ -31,7 +33,7 @@ public class PlayerHealth : MonoBehaviour
     public void Damage(int amount)
     {
         // Don't take damage during IFrames.
-        if (isInvul)
+        if (isInvul || isDead)
         {
             return;
         }
@@ -46,6 +48,9 @@ public class PlayerHealth : MonoBehaviour
             Die();
         }
 
+        // Trigger knockback.
+        KnockBack();
+
         // Trigger invul.
         StartCoroutine(Invul(invulTime));
     }
@@ -58,6 +63,13 @@ public class PlayerHealth : MonoBehaviour
         {
             hp = maxHP;
         }
+    }
+
+    // Knockback
+    void KnockBack()
+    {
+        Vector2 direction = Random.insideUnitCircle;
+        gameObject.GetComponent<Rigidbody2D>().AddForce(direction * knockbackForce);
     }
 
     // Timer method for invuln.
@@ -74,15 +86,21 @@ public class PlayerHealth : MonoBehaviour
         // Explosion.
         ParticleSystem explosionObj = Instantiate(explosion, transform.position, Quaternion.identity);
 
-        // Destroy HP Bar.
-        Destroy(hpBar.gameObject);
+        // Turn off trailers.
+        trailers.TrailerOff();
 
         // Hacky way to kill player, turn its renderer off and destroy all its scripts.
-        gameObject.GetComponent<Renderer>().enabled = false;
+        sprite.GetComponent<Renderer>().enabled = false;
 
         foreach (MonoBehaviour script in gameObject.GetComponents<MonoBehaviour>())
         {
             script.enabled = false;
         }
+
+        // Destroy HP Bar.
+        Destroy(hpBarObj);
+
+        // Set death flag.
+        isDead = true;
     }
 }
