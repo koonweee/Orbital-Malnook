@@ -18,10 +18,10 @@ public class PlayerShooting : MonoBehaviour
     void Update()
     {
         // Shoot on left click.
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    Shoot();
-        //}
+        if (Input.GetMouseButtonDown(0))
+        {
+            Shoot();
+        }
     }
 
     void Shoot()

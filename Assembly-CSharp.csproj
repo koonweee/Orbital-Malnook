@@ -43,9 +43,11 @@
      <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FixedJoystick.cs" />
      <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
      <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
+     <Compile Include="Assets\Scripts\Bar\Bar.cs" />
      <Compile Include="Assets\Scripts\Follow Player\FollowPlayer.cs" />
-     <Compile Include="Assets\Scripts\HP Bar\HealthBar.cs" />
+     <Compile Include="Assets\Scripts\Level\LevelController.cs" />
      <Compile Include="Assets\Scripts\Player\MuzzleFlash.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerExperience.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerShooting.cs" />
@@ -57,6 +59,7 @@
      <Compile Include="Assets\Scripts\Tiles\ShallowWater.cs" />
      <Compile Include="Assets\Scripts\Tiles\ShortGrass.cs" />
      <Compile Include="Assets\Scripts\Tiles\TallGrass.cs" />
+     <None Include="Assets\Fonts\pixeboy-font\misc\Read Me.txt" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.14f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

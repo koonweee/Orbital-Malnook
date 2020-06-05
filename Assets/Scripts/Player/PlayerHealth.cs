@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public GameObject bars;
     public GameObject hpBarObj;
-    private HealthBar hpBar;
+    private Bar hpBar;
     public Animator animator;
     public ParticleSystem explosion;
     public GameObject sprite;
@@ -16,8 +17,8 @@ public class PlayerHealth : MonoBehaviour
     // Initialize HP Bar and set invuln to false.
     void Start()
     {
-        hpBar = hpBarObj.GetComponent<HealthBar>();
-        hpBar.SetMaxHP(maxHP);
+        hpBar = hpBarObj.GetComponent<Bar>();
+        hpBar.SetMax(maxHP);
         hp = maxHP;
         isInvul = false;
         isDead = false;
@@ -26,7 +27,13 @@ public class PlayerHealth : MonoBehaviour
     // Updates HP Bar.
     void Update()
     {
-        hpBar.UpdateHP(hp);
+        hpBar.UpdateVal(hp);
+    }
+
+    public void IncreaseMaxHP(int hp)
+    {
+        maxHP += hp;
+        hpBar.SetMax(maxHP);
     }
 
     // Public method to damage player.
@@ -65,6 +72,12 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    // Heal to full.
+    public void MaxHeal()
+    {
+        hp = maxHP;
+    }
+
     // Knockback
     void KnockBack()
     {
@@ -97,8 +110,8 @@ public class PlayerHealth : MonoBehaviour
             script.enabled = false;
         }
 
-        // Destroy HP Bar.
-        Destroy(hpBarObj);
+        // Destroy bars.
+        bars.SetActive(false);
 
         // Set death flag.
         isDead = true;

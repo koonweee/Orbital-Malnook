@@ -5,17 +5,22 @@ public class StateController : MonoBehaviour
     public PlayerMovement movement;
     public PlayerHealth health;
     public PlayerStealth stealth;
+    public PlayerExperience exp;
     public void Damage(int amount)
     {
         health.Damage(amount);
     }
     public void Die()
     {
-
+        health.Die();
     }
     public void Heal(int amount)
     {
         health.Heal(amount);
+    }
+    public void MaxHeal()
+    {
+        health.MaxHeal();
     }
     public void SpeedUp(float percent)
     {
@@ -36,5 +41,19 @@ public class StateController : MonoBehaviour
     public void Unstealth()
     {
         stealth.Unstealth();
+    }
+    public void GainExp(int amount)
+    {
+        exp.GainExp(amount);
+    }
+
+    public void LoseExp(int amount)
+    {
+        exp.LoseExp(amount);
+    }
+
+    public void LevelUp()
+    {
+        exp.LevelUp();
     }
 }
