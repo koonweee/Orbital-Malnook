@@ -36,6 +36,8 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\EnemyBehaviour.cs" />
+     <Compile Include="Assets\EnemyExp.cs" />
      <Compile Include="Assets\Joystick Pack\Examples\JoystickPlayerExample.cs" />
      <Compile Include="Assets\Joystick Pack\Examples\JoystickSetterExample.cs" />
      <Compile Include="Assets\Joystick Pack\Scripts\Base\Joystick.cs" />
@@ -44,7 +46,10 @@
      <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
      <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
      <Compile Include="Assets\Scripts\Bar\Bar.cs" />
-     <Compile Include="Assets\Scripts\Follow Player\FollowPlayer.cs" />
+     <Compile Include="Assets\Scripts\Enemy\ColliderDamage.cs" />
+     <Compile Include="Assets\Scripts\Enemy\EnemyFollow.cs" />
+     <Compile Include="Assets\Scripts\Enemy\EnemyHealth.cs" />
+     <Compile Include="Assets\Scripts\Follow Character\FollowCharacter.cs" />
      <Compile Include="Assets\Scripts\Level\LevelController.cs" />
      <Compile Include="Assets\Scripts\Player\MuzzleFlash.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerExperience.cs" />
@@ -54,7 +59,8 @@
      <Compile Include="Assets\Scripts\Player\PlayerStealth.cs" />
      <Compile Include="Assets\Scripts\Player\StateController.cs" />
      <Compile Include="Assets\Scripts\Player\TrailersControl.cs" />
-     <Compile Include="Assets\Scripts\Projectiles\ProjectileCollision.cs" />
+     <Compile Include="Assets\Scripts\Projectiles\EnemyProjectileCollision.cs" />
+     <Compile Include="Assets\Scripts\Projectiles\PlayerProjectileCollision.cs" />
      <Compile Include="Assets\Scripts\Tiles\Fire.cs" />
      <Compile Include="Assets\Scripts\Tiles\ShallowWater.cs" />
      <Compile Include="Assets\Scripts\Tiles\ShortGrass.cs" />
