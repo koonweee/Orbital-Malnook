@@ -8,12 +8,14 @@ public class PlayerMovement : MonoBehaviour
     public bool isMoving; // Flag for when player is moving.
     public Animator animator;
     public Joystick moveStick, lookStick;
+    public TileGenerator tileGenerator;
     private Vector2 movement, look; // Movement and looking direction vectors.
     private float currentSpeed;
 
     void Start()
     {
         currentSpeed = initialSpeed;
+        rb.position = new Vector2(tileGenerator.height / 2, tileGenerator.width / 2);
     }
     void Update()
     {

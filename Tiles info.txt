@@ -1,0 +1,35 @@
+parameters:
+size of matrix (x by x)
+percentage of each type
+plant seeds of each type by %
+
+GOL:
+parameters:
+birth criteria - how many to make a dead cell alive
+stay alive range - range of alive to stay alive
+experiment how many iterations
+
+
+make x*x matrix of 0
+for each cell roll a type and plant
+run GOL
+
+ALL 0
+BE 1
+BLC 2
+BRC 3
+F 4
+FE 5
+FER 6
+LE 7
+RE 8
+TLC 9
+TRC 10
+
+neutral 0
+short g 1
+tall g 2
+fire 3
+shallow 4
+deep 5
+obstacles 6
