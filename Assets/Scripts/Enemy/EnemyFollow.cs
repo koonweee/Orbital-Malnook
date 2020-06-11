@@ -7,9 +7,10 @@ public class EnemyFollow : MonoBehaviour
     public Transform player;
     public Rigidbody2D rb;
     public GameObject bullet;
-    public Transform weapon, firePoint;
+    public Transform weapon, firePoint, firePoint2;
     public float speed, distanceBeforeAttack, bulletForce, shootDelay;
     public EnemyBehaviour behaviour;
+    public bool dualShooter;
     private float shootTimer;
 
     void Start()
@@ -50,6 +51,13 @@ public class EnemyFollow : MonoBehaviour
         GameObject bulletObj = Instantiate(bullet, firePoint.position, Quaternion.identity);
         Rigidbody2D bulletRB = bulletObj.GetComponent<Rigidbody2D>();
         bulletRB.AddForce(firePoint.up * bulletForce);
+
+        if (dualShooter)
+        {
+            GameObject bulletObj2 = Instantiate(bullet, firePoint2.position, Quaternion.identity);
+            Rigidbody2D bulletRB2 = bulletObj2.GetComponent<Rigidbody2D>();
+            bulletRB2.AddForce(firePoint.up * bulletForce);
+        }
     }
 
     void Follow()

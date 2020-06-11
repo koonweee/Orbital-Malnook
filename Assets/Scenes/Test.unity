@@ -882,8 +882,8 @@ MonoBehaviour:
   m_ScreenX: 0.5
   m_ScreenY: 0.5
   m_CameraDistance: 10
-  m_DeadZoneWidth: 0.5
-  m_DeadZoneHeight: 0.5
+  m_DeadZoneWidth: 0.25
+  m_DeadZoneHeight: 0.1
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
   m_SoftZoneWidth: 0.8
@@ -1016,6 +1016,55 @@ Tilemap:
     type: 3}
   m_PrefabInstance: {fileID: 5826501454122780817}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1798401757
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1798401758}
+  - component: {fileID: 1798401759}
+  m_Layer: 0
+  m_Name: Mob Spawner
+  m_TagString: Spawner
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1798401758
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798401757}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1950038160}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1798401759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798401757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad26ccb4500da77488ba5c0c8d4bb213, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxMobs: 20
+  tileGenerator: {fileID: 1950038161}
+  tilemap: {fileID: 1520554006}
+  enemies:
+  - {fileID: 4220251186956621636, guid: 5ab4b2f3527f67e468a2760e848366bb, type: 3}
+  - {fileID: 7945298499760259655, guid: 630a9a087dc2b994fadb9986195eb717, type: 3}
 --- !u!224 &1842454032 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
@@ -1119,7 +1168,7 @@ GameObject:
   - component: {fileID: 1950038159}
   - component: {fileID: 1950038161}
   m_Layer: 0
-  m_Name: Grid
+  m_Name: Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1155,6 +1204,7 @@ Transform:
   - {fileID: 1599768141}
   - {fileID: 1979474119}
   - {fileID: 549729663}
+  - {fileID: 1798401758}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

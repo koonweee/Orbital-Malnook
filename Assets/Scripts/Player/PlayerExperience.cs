@@ -22,8 +22,8 @@ public class PlayerExperience : MonoBehaviour
     void Update()
     {
         // FOR TESTING.
-        if (Input.GetMouseButtonDown(1)) GainExp(10);
-        if (Input.GetMouseButtonDown(2)) LoseExp(10);
+        //if (Input.GetMouseButtonDown(1)) GainExp(10);
+        //if (Input.GetMouseButtonDown(2)) LoseExp(10);
 
         expBar.UpdateVal(exp);
     }
@@ -49,11 +49,11 @@ public class PlayerExperience : MonoBehaviour
     {
         ++level;
         exp = 0;
-        levelupExp = 25 * level * (1 + level); // Next exp target.
+        levelupExp = 10 * level * (1 + level); // Next exp target.
         levelCon.SetLevel(level); // Update text.
 
         // Increase max health.
-        health.IncreaseMaxHP((int) (Mathf.Sqrt(level) * 100));
+        health.IncreaseMaxHP((int) (Mathf.Sqrt(level) * 50));
         health.MaxHeal(); // Heal to full.
         expBar.SetMax(levelupExp); // Increase bar's max exp.
 

@@ -191,6 +191,7 @@ MonoBehaviour:
   explosion: {fileID: 7879184956049828715, guid: 1c29b18966af40a45ad2a1e7c3f56f82,
     type: 3}
   exp: {fileID: 2111842718623809086}
+  spawner: {fileID: 0}
   maxHP: 50
   damaged: 0
 --- !u!114 &4220251186954823601
@@ -210,11 +211,13 @@ MonoBehaviour:
   bullet: {fileID: 3963833082028900960, guid: 735da33573d78bc408cae8717f56a1bf, type: 3}
   weapon: {fileID: 4220251186954823607}
   firePoint: {fileID: 4220251186034830570}
+  firePoint2: {fileID: 0}
   speed: 600
-  distanceBeforeAttack: 3
+  distanceBeforeAttack: 3.2
   bulletForce: 200
   shootDelay: 5
   behaviour: {fileID: 3845031854438487156}
+  dualShooter: 0
 --- !u!114 &3845031854438487156
 MonoBehaviour:
   m_ObjectHideFlags: 0

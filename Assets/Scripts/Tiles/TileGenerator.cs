@@ -22,7 +22,7 @@ public class TileGenerator : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButton(2))
+        if (Input.GetMouseButtonDown(2))
         {
             Start();
         }

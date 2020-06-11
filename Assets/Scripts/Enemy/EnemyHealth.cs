@@ -10,6 +10,7 @@ public class EnemyHealth : MonoBehaviour
     public Animator animator;
     public ParticleSystem explosion;
     public EnemyExp exp;
+    public MobSpawner spawner;
     public int maxHP;
     public bool damaged;
     private int hp;
@@ -20,6 +21,7 @@ public class EnemyHealth : MonoBehaviour
         hp = maxHP;
         damaged = false;
         animator = GetComponent<Animator>();
+        spawner = GameObject.FindGameObjectWithTag("Spawner").GetComponent<MobSpawner>();
     }
 
     // Updates HP Bar.
@@ -69,6 +71,9 @@ public class EnemyHealth : MonoBehaviour
     // Death method.
     public void Die()
     {
+        // Report death to spawner.
+        spawner.DecrementMobCount();
+
         // Give exp.
         exp.GiveExp();
 
