@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class TileGenerator : MonoBehaviour
 {
-    public int height, width;
+    public int height, width, numOfTileTypes, numOfTilesInType, numOfObstacles;
     public Tilemap[] tilemaps;
     public Tile[,] tiles;
     public float[] percents;
@@ -14,7 +14,7 @@ public class TileGenerator : MonoBehaviour
     void Start()
     {
         grid = new int[height, width];
-        tiles = new Tile[7, 11];
+        tiles = new Tile[numOfTileTypes, numOfTilesInType];
         InitGrid();
         PlantSeeds();
         DrawGrid();
@@ -22,7 +22,7 @@ public class TileGenerator : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(2))
+        if (Input.GetKeyDown(KeyCode.G))
         {
             Start();
         }
@@ -35,9 +35,9 @@ public class TileGenerator : MonoBehaviour
             tm.ClearAllTiles();
         }
 
-        for (int type = 0; type < 7; ++type)
+        for (int type = 0; type < numOfTileTypes; ++type)
         {
-            for (int tile = 0; tile < 11; ++tile)
+            for (int tile = 0; tile < numOfTilesInType; ++tile)
             {
                 Tile t = Resources.Load<Tile>(type + "/" + tile);
                 tiles[type, tile] = t;
@@ -48,6 +48,7 @@ public class TileGenerator : MonoBehaviour
         {
             for (int c = 0; c < width; ++c)
             {
+                // 4 is filler tile.
                 tilemaps[0].SetTile(new Vector3Int(c, r, 0), tiles[0, 4]);
             }
         }
@@ -95,7 +96,8 @@ public class TileGenerator : MonoBehaviour
 
     int ChooseTile(int r, int c)
     {
-        if (grid[r, c] == 6) return Random.Range(0, 3);
+        // 6 is obstacle. Choose random.
+        if (grid[r, c] == 6) return Random.Range(0, numOfObstacles);
 
         bool up = SomethingHere(r + 1, c);
         bool down = SomethingHere(r - 1, c);

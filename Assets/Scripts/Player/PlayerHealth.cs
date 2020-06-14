@@ -10,10 +10,14 @@ public class PlayerHealth : MonoBehaviour
     public ParticleSystem explosion;
     public GameObject sprite;
     public TrailersControl trailers;
+    public AudioSource playerAudio;
+    public AudioClip playerHurt, playerDeath;
     public float knockbackForce;
     public int maxHP, invulTime;
+    public SceneLoader scene;
     private int hp;
     private bool isInvul, isDead;
+    
     // Initialize HP Bar and set invuln to false.
     void Start()
     {
@@ -47,6 +51,10 @@ public class PlayerHealth : MonoBehaviour
 
         // Trigger flashing red animation.
         animator.SetTrigger("Damaged");
+
+        // Sound.
+        playerAudio.clip = playerHurt;
+        playerAudio.Play();
 
         // Decrease health and check death.
         hp -= amount;
@@ -99,6 +107,10 @@ public class PlayerHealth : MonoBehaviour
         // Explosion.
         ParticleSystem explosionObj = Instantiate(explosion, transform.position, Quaternion.identity);
 
+        // Sound.
+        playerAudio.clip = playerDeath;
+        playerAudio.Play();
+
         // Turn off trailers.
         trailers.TrailerOff();
 
@@ -115,5 +127,8 @@ public class PlayerHealth : MonoBehaviour
 
         // Set death flag.
         isDead = true;
+
+        // Go to menu.
+        scene.LoadScene("Menu");
     }
 }

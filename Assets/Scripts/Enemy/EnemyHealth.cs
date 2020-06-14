@@ -11,6 +11,8 @@ public class EnemyHealth : MonoBehaviour
     public ParticleSystem explosion;
     public EnemyExp exp;
     public MobSpawner spawner;
+    public AudioSource enemyAudio;
+    public AudioClip enemyHurt;
     public int maxHP;
     public bool damaged;
     private int hp;
@@ -22,6 +24,7 @@ public class EnemyHealth : MonoBehaviour
         damaged = false;
         animator = GetComponent<Animator>();
         spawner = GameObject.FindGameObjectWithTag("Spawner").GetComponent<MobSpawner>();
+        enemyAudio = GetComponent<AudioSource>();
     }
 
     // Updates HP Bar.
@@ -47,9 +50,17 @@ public class EnemyHealth : MonoBehaviour
         if (hp <= 0)
         {
             Die();
+            return;
         }
 
         damaged = true;
+
+        // Sound.
+        if (gameObject != null) 
+        {
+            enemyAudio.clip = enemyHurt;
+            enemyAudio.Play();
+        }
     }
 
     // Public method to heal.

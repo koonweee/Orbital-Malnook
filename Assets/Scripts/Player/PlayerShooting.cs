@@ -12,28 +12,28 @@ public class PlayerShooting : MonoBehaviour
 
     void Start()
     {
-        shoot.onClick.AddListener(Shoot);
+        shoot.onClick.AddListener(() => Shoot(bullet, 0, force));
     }
 
     void Update()
     {
         // Shoot on left click.
-        if (Input.GetMouseButtonDown(0))
-        {
-            Shoot();
-        }
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    Shoot(bullet, 0, force);
+        //}
     }
 
-    void Shoot()
+    public void Shoot(GameObject bullet, float relativeAngle, float bulletForce)
     {
         // Muzzle flash.
         flash.Flash(5, 0.05f);
 
         GameObject spawnedBullet = Instantiate(bullet, firePoint.position, Quaternion.identity); // Spawn bullet.
         Rigidbody2D rb = spawnedBullet.GetComponent<Rigidbody2D>(); // Get bullet's RB.
-        rb.AddForce(transform.up * force);
+        rb.AddForce(Quaternion.Euler(0, 0, relativeAngle) * firePoint.up * bulletForce);
 
         // Recoil.
-        gameObject.GetComponent<Rigidbody2D>().AddForce(-transform.up * recoilForce * Time.deltaTime);
+        gameObject.GetComponent<Rigidbody2D>().AddForce(-firePoint.up * recoilForce);
     }
 }

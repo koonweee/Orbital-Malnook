@@ -14,18 +14,18 @@ public class TrailersControl : MonoBehaviour
         rightTrailer.Stop();
     }
 
-    void Update()
-    {
-        // Moving -> On, vice versa.
-        if (gameObject.GetComponent<PlayerMovement>().isMoving)
-        {
-            TrailerOn();
-        }
-        else
-        {
-            TrailerOff();
-        }
-    }
+    //void Update()
+    //{
+    //    // Moving -> On, vice versa.
+    //    if (gameObject.GetComponent<PlayerMovement>().isMoving)
+    //    {
+    //        TrailerOn();
+    //    }
+    //    else
+    //    {
+    //        TrailerOff();
+    //    }
+    //}
 
     public void TrailerOn()
     {
