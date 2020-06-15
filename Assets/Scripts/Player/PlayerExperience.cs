@@ -8,8 +8,6 @@ public class PlayerExperience : MonoBehaviour
     public LevelController levelCon;
     public PlayerHealth health;
     public Bar expBar;
-    public AudioSource playerAudio;
-    public AudioClip playerLevel;
 
     void Start()
     {
@@ -49,10 +47,6 @@ public class PlayerExperience : MonoBehaviour
 
     public void LevelUp()
     {
-        // Sound.
-        playerAudio.clip = playerLevel;
-        playerAudio.Play();
-
         ++level;
         exp = 0;
         levelupExp = 10 * level * (1 + level); // Next exp target.

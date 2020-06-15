@@ -16,8 +16,10 @@ public class EnemyHealth : MonoBehaviour
     public int maxHP;
     public bool damaged;
     private int hp;
+    private bool isDead;
     void Start()
     {
+        isDead = false;
         hpBar = hpBarObj.GetComponent<Bar>();
         hpBar.SetMax(maxHP);
         hp = maxHP;
@@ -82,6 +84,10 @@ public class EnemyHealth : MonoBehaviour
     // Death method.
     public void Die()
     {
+        if (isDead) return;
+
+        isDead = true;
+
         // Report death to spawner.
         spawner.DecrementMobCount();
 

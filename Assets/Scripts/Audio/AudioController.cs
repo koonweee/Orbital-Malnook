@@ -17,7 +17,7 @@ public static class AudioController
     {
         audioSource.Play();
         audioSource.volume = 0f;
-        while (audioSource.volume < 0.4f)
+        while (audioSource.volume < 1f)
         {
             audioSource.volume += Time.deltaTime / FadeTime;
             yield return null;
