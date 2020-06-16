@@ -8,24 +8,18 @@ public class TileGenerator : MonoBehaviour
     public int height, width, numOfTileTypes, numOfTilesInType, numOfObstacles;
     public Tilemap[] tilemaps;
     public Tile[,] tiles;
-    public float[] percents;
+    private float[] percents;
     private int[,] grid;
 
-    void Start()
+    public void Generate(float[] percents)
     {
         grid = new int[height, width];
         tiles = new Tile[numOfTileTypes, numOfTilesInType];
+        this.percents = percents;
+
         InitGrid();
         PlantSeeds();
         DrawGrid();
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            Start();
-        }
     }
 
     void InitGrid()

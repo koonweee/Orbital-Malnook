@@ -9,6 +9,7 @@ TagManager:
   - Canvas
   - Enemy
   - Spawner
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - PlayerProjectile
   - Player
   - Enemy
-  - 
+  - Tiles
   - 
   - 
   - 

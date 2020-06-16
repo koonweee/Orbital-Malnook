@@ -32,6 +32,7 @@ ScriptsOnlyBuild:
     - TallGrass
     - TileGenerator
     - TrailersControl
+    - WeatherControl
     Cinemachine.dll:
     - Cinemachine.CinemachineBrain
     - Cinemachine.CinemachineFramingTransposer
@@ -50,6 +51,22 @@ ScriptsOnlyBuild:
     - UnityEditor.Tilemaps.PaintableSceneViewGrid
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.TileDragAndDropManager
+    Unity.Postprocessing.Runtime.dll:
+    - UnityEngine.Rendering.PostProcessing.AmbientOcclusion
+    - UnityEngine.Rendering.PostProcessing.AutoExposure
+    - UnityEngine.Rendering.PostProcessing.Bloom
+    - UnityEngine.Rendering.PostProcessing.ChromaticAberration
+    - UnityEngine.Rendering.PostProcessing.ColorGrading
+    - UnityEngine.Rendering.PostProcessing.DepthOfField
+    - UnityEngine.Rendering.PostProcessing.Grain
+    - UnityEngine.Rendering.PostProcessing.LensDistortion
+    - UnityEngine.Rendering.PostProcessing.MotionBlur
+    - UnityEngine.Rendering.PostProcessing.PostProcessLayer
+    - UnityEngine.Rendering.PostProcessing.PostProcessProfile
+    - UnityEngine.Rendering.PostProcessing.PostProcessResources
+    - UnityEngine.Rendering.PostProcessing.PostProcessVolume
+    - UnityEngine.Rendering.PostProcessing.ScreenSpaceReflections
+    - UnityEngine.Rendering.PostProcessing.Vignette
     Unity.RenderPipelines.Core.Runtime.dll:
     - UnityEngine.Rendering.UI.DebugUIHandlerBitField
     - UnityEngine.Rendering.UI.DebugUIHandlerButton
@@ -131,6 +148,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 70
       Script: {instanceID: 0}
+    - Class: 72
+      Script: {instanceID: 0}
     - Class: 74
       Script: {instanceID: 0}
     - Class: 81
@@ -146,13 +165,19 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11360}
+      Script: {instanceID: 11322}
     - Class: 114
-      Script: {instanceID: 11364}
+      Script: {instanceID: 11358}
     - Class: 114
-      Script: {instanceID: 11388}
+      Script: {instanceID: 11362}
     - Class: 114
-      Script: {instanceID: 11416}
+      Script: {instanceID: 11386}
+    - Class: 114
+      Script: {instanceID: 11414}
+    - Class: 114
+      Script: {instanceID: 11646}
+    - Class: 114
+      Script: {instanceID: 11764}
     - Class: 114
       Script: {instanceID: 11860}
     - Class: 114
@@ -163,6 +188,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 11964}
     - Class: 114
       Script: {instanceID: 12036}
+    - Class: 114
+      Script: {instanceID: 12252}
     - Class: 114
       Script: {instanceID: 12358}
     - Class: 114
@@ -181,6 +208,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 13206}
     - Class: 114
       Script: {instanceID: 13502}
+    - Class: 114
+      Script: {instanceID: 13898}
     - Class: 114
       Script: {instanceID: 13900}
     - Class: 114
@@ -219,6 +248,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 15604}
     - Class: 114
       Script: {instanceID: 15734}
+    - Class: 114
+      Script: {instanceID: 16232}
     - Class: 114
       Script: {instanceID: 16472}
     - Class: 114
@@ -278,6 +309,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 70
       Script: {instanceID: 0}
+    - Class: 72
+      Script: {instanceID: 0}
     - Class: 74
       Script: {instanceID: 0}
     - Class: 81
@@ -295,19 +328,23 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: -584}
     - Class: 114
-      Script: {instanceID: 756}
+      Script: {instanceID: 754}
     - Class: 114
-      Script: {instanceID: 11360}
+      Script: {instanceID: 11322}
     - Class: 114
-      Script: {instanceID: 11364}
+      Script: {instanceID: 11358}
     - Class: 114
-      Script: {instanceID: 11388}
+      Script: {instanceID: 11362}
     - Class: 114
-      Script: {instanceID: 11530}
+      Script: {instanceID: 11386}
     - Class: 114
-      Script: {instanceID: 11688}
+      Script: {instanceID: 11528}
     - Class: 114
-      Script: {instanceID: 11718}
+      Script: {instanceID: 11646}
+    - Class: 114
+      Script: {instanceID: 11686}
+    - Class: 114
+      Script: {instanceID: 11716}
     - Class: 114
       Script: {instanceID: 11860}
     - Class: 114
@@ -318,6 +355,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 12038}
     - Class: 114
       Script: {instanceID: 12234}
+    - Class: 114
+      Script: {instanceID: 12252}
     - Class: 114
       Script: {instanceID: 12270}
     - Class: 114
@@ -346,6 +385,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 13652}
     - Class: 114
       Script: {instanceID: 13816}
+    - Class: 114
+      Script: {instanceID: 13898}
     - Class: 114
       Script: {instanceID: 13930}
     - Class: 114
@@ -384,6 +425,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 15926}
     - Class: 114
       Script: {instanceID: 16176}
+    - Class: 114
+      Script: {instanceID: 16232}
     - Class: 114
       Script: {instanceID: 16234}
     - Class: 114
@@ -565,6 +608,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.RenderPipelines.Core.Runtime.dll
     namespaceName: UnityEngine.Rendering.UI
     className: DebugUIHandlerVBox
+  - hash:
+      serializedVersion: 2
+      Hash: c94c80c06439764595e79b71d764e69f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: WeatherControl
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -1551,7 +1600,7 @@ ScriptsOnlyBuild:
     className: EnemyFollow
   - hash:
       serializedVersion: 2
-      Hash: 8d8c0253c310ba10aa74e4cfec50d75e
+      Hash: 13d8b43e43a13f35d5470853bbf646ea
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TileGenerator
@@ -1877,4 +1926,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/Menu.unity
   - Assets/Scenes/In Game.unity
-  playerPath: C:/Users/lamzh/Documents/Work/Orbital/Builds/v1.1.apk
+  playerPath: C:/Users/lamzh/Documents/Work/Orbital/Builds/v1.2.apk

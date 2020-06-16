@@ -16,6 +16,11 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         currentSpeed = initialSpeed;
+        SpawnPlayer();
+    }
+
+    void SpawnPlayer()
+    {
         rb.position = new Vector2(tileGenerator.height / 2, tileGenerator.width / 2);
     }
     void Update()

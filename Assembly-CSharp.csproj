@@ -75,6 +75,7 @@
      <Compile Include="Assets\Scripts\Tiles\ShortGrass.cs" />
      <Compile Include="Assets\Scripts\Tiles\TallGrass.cs" />
      <Compile Include="Assets\Scripts\Tiles\TileGenerator.cs" />
+     <Compile Include="Assets\WeatherControl.cs" />
      <None Include="Assets\Fonts\pixeboy-font\misc\Read Me.txt" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.14f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
