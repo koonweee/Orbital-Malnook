@@ -18,7 +18,6 @@ public class WeatherControl : MonoBehaviour
     void Start()
     {
         cam.GetComponent<PostProcessVolume>().profile.TryGetSettings(out bloom);
-        Generate("Clear");
     }
     void Update()
     {
@@ -30,15 +29,19 @@ public class WeatherControl : MonoBehaviour
     }
     public void Generate(string weather)
     {
-        if (weather == "Sunny") Sunny();
-        if (weather == "Rainy") Rainy();
-        if (weather == "Cloudy") Cloudy();
-        if (weather == "Clear") Clear();
+        if (weather == "Clear") Sunny();
+        else if (weather == "Rain" || weather == "Drizzle" || weather == "Thunderstorm") Rainy();
+        else if (weather == "Clouds") Cloudy();
+        else Clear();
 
         Vector2 mid = new Vector2(tileGen.height / 2, tileGen.width / 2);
-        if (Physics2D.OverlapCircle(mid, 0.1f).gameObject.tag == "Obstacle") Generate(weather);
+        Collider2D collider = Physics2D.OverlapCircle(mid, 0.5f);
+        if (collider.gameObject.tag == "Obstacle"
+            || collider.gameObject.tag == "Food"
+            || collider.gameObject.tag == "Shop"
+            || collider.gameObject.tag == "Education") Generate(weather);
     }
-    public void Sunny()
+    void Sunny()
     {
         tileGen.Generate(new float[]{0.8f, 0.83f, 0.86f, 0.95f, 0.95f, 0.95f, 1f});
         filter.color = new Color32(255, 30, 0, 30);
@@ -47,7 +50,7 @@ public class WeatherControl : MonoBehaviour
         rain.Stop();
         rainSound.Stop();
     }
-    public void Rainy()
+    void Rainy()
     {
         tileGen.Generate(new float[]{0.7f, 0.73f, 0.76f, 0.76f, 0.85f, 0.95f, 1f});
         filter.color = new Color32(0, 0, 0, 100);
@@ -56,7 +59,7 @@ public class WeatherControl : MonoBehaviour
         rain.Play();
         rainSound.Play();
     }
-    public void Cloudy()
+    void Cloudy()
     {
         tileGen.Generate(new float[]{0.7f, 0.78f, 0.86f, 0.89f, 0.92f, 0.95f, 1f});
         filter.color = new Color32(0, 0, 0, 80);
@@ -65,7 +68,7 @@ public class WeatherControl : MonoBehaviour
         rain.Stop();
         rainSound.Stop();
     }
-    public void Clear()
+    void Clear()
     {
         tileGen.Generate(new float[]{0.8f, 0.83f, 0.86f, 0.89f, 0.92f, 0.95f, 1f});
         filter.color = new Color32(0, 0, 0, 0);

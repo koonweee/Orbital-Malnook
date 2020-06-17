@@ -10,6 +10,9 @@ TagManager:
   - Enemy
   - Spawner
   - Obstacle
+  - Food
+  - Education
+  - Shop
   layers:
   - Default
   - TransparentFX

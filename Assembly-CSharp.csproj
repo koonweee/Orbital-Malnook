@@ -36,6 +36,8 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\BuildingInfo.cs" />
+     <Compile Include="Assets\FoodHeal.cs" />
      <Compile Include="Assets\Joystick Pack\Examples\JoystickPlayerExample.cs" />
      <Compile Include="Assets\Joystick Pack\Examples\JoystickSetterExample.cs" />
      <Compile Include="Assets\Joystick Pack\Scripts\Base\Joystick.cs" />
@@ -52,7 +54,9 @@
      <Compile Include="Assets\Scripts\Enemy\EnemyExp.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyFollow.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyHealth.cs" />
+     <Compile Include="Assets\Scripts\Environment\MalnookGEO.cs" />
      <Compile Include="Assets\Scripts\Environment\MobSpawner.cs" />
+     <Compile Include="Assets\Scripts\Environment\WeatherControl.cs" />
      <Compile Include="Assets\Scripts\Follow Character\FollowCharacter.cs" />
      <Compile Include="Assets\Scripts\Level\LevelController.cs" />
      <Compile Include="Assets\Scripts\Player\MuzzleFlash.cs" />
@@ -75,7 +79,7 @@
      <Compile Include="Assets\Scripts\Tiles\ShortGrass.cs" />
      <Compile Include="Assets\Scripts\Tiles\TallGrass.cs" />
      <Compile Include="Assets\Scripts\Tiles\TileGenerator.cs" />
-     <Compile Include="Assets\WeatherControl.cs" />
+     <None Include="Assets\link.xml" />
      <None Include="Assets\Fonts\pixeboy-font\misc\Read Me.txt" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.14f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
@@ -253,6 +257,9 @@
     </Reference>
     <Reference Include="UnityEditor">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.14f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+        <HintPath>C:/Users/lamzh/Documents/Work/Orbital/Orbital Malnook/Assets/Plugins/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.14f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
