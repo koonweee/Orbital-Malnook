@@ -16,12 +16,22 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         currentSpeed = initialSpeed;
-        SpawnPlayer();
+        Vector2 spawn = new Vector2(tileGenerator.height / 2, tileGenerator.width / 2);
+        SpawnPlayer(spawn);
     }
 
-    void SpawnPlayer()
+    void SpawnPlayer(Vector2 spawn)
     {
-        rb.position = new Vector2(tileGenerator.height / 2, tileGenerator.width / 2);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(spawn, 0.1f);
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.gameObject.tag != "Neutral" && collider.gameObject.tag != "Player")
+            {
+                SpawnPlayer(spawn + new Vector2(1, 0));
+                return;
+            }
+        }
+        transform.position = spawn;
     }
     void Update()
     {

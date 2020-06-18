@@ -34,12 +34,12 @@ public class WeatherControl : MonoBehaviour
         else if (weather == "Clouds") Cloudy();
         else Clear();
 
-        Vector2 mid = new Vector2(tileGen.height / 2, tileGen.width / 2);
-        Collider2D collider = Physics2D.OverlapCircle(mid, 0.5f);
-        if (collider.gameObject.tag == "Obstacle"
-            || collider.gameObject.tag == "Food"
-            || collider.gameObject.tag == "Shop"
-            || collider.gameObject.tag == "Education") Generate(weather);
+        //Vector2 mid = new Vector2(tileGen.height / 2, tileGen.width / 2);
+        //Collider2D collider = Physics2D.OverlapCircle(mid, 0.5f);
+        //if (collider.gameObject.tag == "Obstacle"
+        //    || collider.gameObject.tag == "Food"
+        //    || collider.gameObject.tag == "Shop"
+        //    || collider.gameObject.tag == "Education") Generate(weather);
     }
     void Sunny()
     {

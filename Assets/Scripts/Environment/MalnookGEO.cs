@@ -31,9 +31,9 @@ public class MalnookGEO : MonoBehaviour
         {
             Permission.RequestUserPermission(Permission.CoarseLocation);
         }
-        StartCoroutine(InitGPS());
+        //StartCoroutine(InitGPS());
         // FOR TESTING REMOVE ME FOR ACTUAL GPS
-        //InitMap();
+        InitMap();
     }
     IEnumerator InitGPS()
     {

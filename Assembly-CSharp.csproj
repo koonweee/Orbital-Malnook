@@ -36,8 +36,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\BuildingInfo.cs" />
-     <Compile Include="Assets\FoodHeal.cs" />
+     <Compile Include="Assets\Generating.cs" />
      <Compile Include="Assets\Joystick Pack\Examples\JoystickPlayerExample.cs" />
      <Compile Include="Assets\Joystick Pack\Examples\JoystickSetterExample.cs" />
      <Compile Include="Assets\Joystick Pack\Scripts\Base\Joystick.cs" />
@@ -54,11 +53,13 @@
      <Compile Include="Assets\Scripts\Enemy\EnemyExp.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyFollow.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyHealth.cs" />
+     <Compile Include="Assets\Scripts\Environment\BuildingInfo.cs" />
      <Compile Include="Assets\Scripts\Environment\MalnookGEO.cs" />
      <Compile Include="Assets\Scripts\Environment\MobSpawner.cs" />
      <Compile Include="Assets\Scripts\Environment\WeatherControl.cs" />
      <Compile Include="Assets\Scripts\Follow Character\FollowCharacter.cs" />
      <Compile Include="Assets\Scripts\Level\LevelController.cs" />
+     <Compile Include="Assets\Scripts\Player\FoodHeal.cs" />
      <Compile Include="Assets\Scripts\Player\MuzzleFlash.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerDash.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerExperience.cs" />
