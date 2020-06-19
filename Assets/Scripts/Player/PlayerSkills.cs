@@ -7,6 +7,7 @@ public class PlayerSkills : MonoBehaviour
 {
     private Skill[] skills;
     private Skill skillA, skillB;
+    public Sprite[] skillIcons;
     public Button skillAButton, skillBButton;
     public GameObject shotgunBullet;
     public PlayerShooting shooter;
@@ -14,16 +15,22 @@ public class PlayerSkills : MonoBehaviour
     public int shotgunSpread, spreadAngle, shotgunForce;
     public float blinkSpeed;
     public AudioClip blinkSound;
+    public GameObject fireball;
+    public int fireballForce;
+    public GameObject iceball;
+    public int iceballForce;
 
     void Start()
     {
         // Init skills pool here.
         skills = new Skill[]{new Shotgun(shotgunBullet, shotgunSpread, spreadAngle, shooter, shotgunForce),
-                             new Blink(gameObject, blinkSpeed, dashEffect, blinkSound)};
+                             new Blink(gameObject, blinkSpeed, dashEffect, blinkSound),
+                             new Fireball(fireball, shooter, fireballForce),
+                             new Iceball(iceball, shooter, iceballForce)};
 
         // FOR TESTING, DEFAULT SKILLS.
-        LockInSkill('A', 0);
-        LockInSkill('B', 1);
+        LockInSkill('A', 2);
+        LockInSkill('B', 3);
 
         // Skills joystick buttons.
         skillAButton.onClick.AddListener(() => skillA.Activate());
@@ -32,8 +39,16 @@ public class PlayerSkills : MonoBehaviour
 
     public void LockInSkill(char skill, int choice)
     {
-        if (skill == 'A') skillA = skills[choice];
-        if (skill == 'B') skillB = skills[choice];
+        if (skill == 'A') 
+        {
+            skillA = skills[choice];
+            skillAButton.GetComponent<Image>().sprite = skillIcons[choice];
+        }
+        if (skill == 'B') 
+        {
+            skillB = skills[choice];
+            skillBButton.GetComponent<Image>().sprite = skillIcons[choice];
+        }
     }
 
     void Update()
@@ -73,6 +88,40 @@ class Shotgun : Skill
             shooter.Shoot(shotgunBullet, relativeAngle, shotgunForce);
             relativeAngle -= interval;
         }
+    }
+}
+class Fireball : Skill
+{
+    private GameObject fireball;
+    private int fireballForce;
+    private PlayerShooting shooter;
+
+    public Fireball(GameObject fireball, PlayerShooting shooter, int fireballForce)
+    {
+        this.fireball = fireball;
+        this.shooter = shooter;
+        this.fireballForce = fireballForce;
+    }
+    public void Activate()
+    {
+        shooter.Shoot(fireball, 0, fireballForce);
+    }
+}
+class Iceball : Skill
+{
+    private GameObject iceball;
+    private int iceballForce;
+    private PlayerShooting shooter;
+
+    public Iceball(GameObject iceball, PlayerShooting shooter, int iceballForce)
+    {
+        this.iceball = iceball;
+        this.shooter = shooter;
+        this.iceballForce = iceballForce;
+    }
+    public void Activate()
+    {
+        shooter.Shoot(iceball, 0, iceballForce);
     }
 }
 

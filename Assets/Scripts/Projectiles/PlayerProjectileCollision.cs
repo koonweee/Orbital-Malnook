@@ -6,6 +6,9 @@ public class PlayerProjectileCollision : MonoBehaviour
 {
     public float timeBeforeDestroy;
     public int damage;
+    public float duration;
+    public float slowAmount;
+    public string type;
     void Start()
     {
         StartCoroutine(DestroyAfterTime());
@@ -21,7 +24,7 @@ public class PlayerProjectileCollision : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            collision.gameObject.GetComponent<EnemyHealth>().Damage(damage);
+            Damage(collision.gameObject);
         }
 
         // Destroy projectile on collision with anything except projectiles;
@@ -33,5 +36,19 @@ public class PlayerProjectileCollision : MonoBehaviour
             Destroy(gameObject);
         }
 
+    }
+
+    void Damage(GameObject enemy)
+    {
+        enemy.GetComponent<EnemyHealth>().Damage(damage);
+
+        if (type == "dot")
+        {
+            enemy.GetComponent<EnemyState>().DOT(duration, damage);
+        }
+        else if (type == "ice")
+        {
+            enemy.GetComponent<EnemyState>().Slow(duration, slowAmount);
+        }
     }
 }

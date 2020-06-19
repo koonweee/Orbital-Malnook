@@ -19,6 +19,7 @@ public class MalnookGEO : MonoBehaviour
     public Tile foodTile, educationTile, shopTile;
     public TileGenerator tileGen;
     public Canvas buildingInfo;
+    public Animator generating;
     void Start()
     {
         Debug.Log("STARTING!");
@@ -27,13 +28,9 @@ public class MalnookGEO : MonoBehaviour
         {
             Permission.RequestUserPermission(Permission.FineLocation);
         }
-        if (!Permission.HasUserAuthorizedPermission(Permission.CoarseLocation))
-        {
-            Permission.RequestUserPermission(Permission.CoarseLocation);
-        }
-        //StartCoroutine(InitGPS());
+        StartCoroutine(InitGPS());
         // FOR TESTING REMOVE ME FOR ACTUAL GPS
-        InitMap();
+        //InitMap();
     }
     IEnumerator InitGPS()
     {
@@ -89,6 +86,9 @@ public class MalnookGEO : MonoBehaviour
         geo = new GeoInfo(lat, lon, rad);
         InitWeather();
         InitBuildings();
+        Debug.Log("DONE GENERATGIONG");
+        generating.SetTrigger("Hide");
+        
     }
     void InitWeather()
     {

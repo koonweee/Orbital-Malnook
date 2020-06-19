@@ -8,14 +8,17 @@ public class BuildingInfo : MonoBehaviour
 
     void Update()
     {
-        Collider2D collider = Physics2D.OverlapCircle(transform.position, 2f);
-        if (collider != null && collider.gameObject.tag == "Player")
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 2f);
+        foreach (Collider2D collider in colliders)
         {
-            Show();
-        } 
-        else {
-            Hide();
+            if (collider.gameObject.tag == "Player")
+            {
+                Show();
+                return;
+            } 
         }
+
+        Hide();
     }
 
     public void Show()
