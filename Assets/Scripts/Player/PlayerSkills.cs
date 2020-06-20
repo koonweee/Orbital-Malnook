@@ -7,6 +7,7 @@ public class PlayerSkills : MonoBehaviour
 {
     private Skill[] skills;
     private Skill skillA, skillB;
+    public int skillAID, skillBID;
     public Sprite[] skillIcons;
     public Button skillAButton, skillBButton;
     public GameObject shotgunBullet;
@@ -41,11 +42,15 @@ public class PlayerSkills : MonoBehaviour
     {
         if (skill == 'A') 
         {
+            if (skillBID == choice) return;
+            skillAID = choice;
             skillA = skills[choice];
             skillAButton.GetComponent<Image>().sprite = skillIcons[choice];
         }
         if (skill == 'B') 
         {
+            if (skillAID == choice) return;
+            skillBID = choice;
             skillB = skills[choice];
             skillBButton.GetComponent<Image>().sprite = skillIcons[choice];
         }

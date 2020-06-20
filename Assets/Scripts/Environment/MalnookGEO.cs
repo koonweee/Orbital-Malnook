@@ -86,7 +86,6 @@ public class MalnookGEO : MonoBehaviour
         geo = new GeoInfo(lat, lon, rad);
         InitWeather();
         InitBuildings();
-        Debug.Log("DONE GENERATGIONG");
         generating.SetTrigger("Hide");
         
     }
