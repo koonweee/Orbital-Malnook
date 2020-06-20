@@ -159,81 +159,73 @@ class GeoInfo
     }
 
     //returns list of place objects (for food in specified radius around specified coordinates)
-    public ArrayList GetFood()
+    public ArrayList GetFood(int pages)
     {
-        string[] foodTags = new string[] { "restaurant", "cafe", "supermarket" };
-        ArrayList foodPlaces = new ArrayList();
+        string keyword = "food";
         //make request to API for food places in radius
-        foreach (string foodTag in foodTags)
-        {
-            //make search using foodtag, adding results to arraylist
-            ArrayList results = makeSearch(foodTag);
-            Console.WriteLine("total results for " + foodTag + " = " + results.Count);
-            foodPlaces.AddRange(results);
-
-        }
-        return foodPlaces;
+        ArrayList results = makeSearch(keyword, pages);
+        Console.WriteLine("total results for " + keyword + " = " + results.Count);
+        return results;
     }
-    //returns list of place objects (for education in specified radius around specified coordinates)
-    public ArrayList GetEdu()
+
+    //returns list of place objects (for edu in specified radius around specified coordinates)
+    public ArrayList GetEdu(int pages)
     {
-        string[] eduTags = new string[] { "primary_school", "secondary_school", "university" };
-        ArrayList eduPlaces = new ArrayList();
-        //make request to API for food places in radius
-        foreach (string eduTag in eduTags)
-        {
-            //make search using foodtag, adding results to arraylist
-            ArrayList results = makeSearch(eduTag);
-            Console.WriteLine("total results for " + eduTag + " = " + results.Count);
-            eduPlaces.AddRange(results);
-
-        }
-        return eduPlaces;
+        string keyword = "school";
+        //make request to API for edu places in radius
+        ArrayList results = makeSearch(keyword, pages);
+        Console.WriteLine("total results for " + keyword + " = " + results.Count);
+        return results;
     }
+
     //returns list of place objects (for shops in specified radius around specified coordinates)
-    public ArrayList GetShops()
+    public ArrayList GetShops(int pages)
     {
-        string[] shopTags = new string[] { "store" };
-        ArrayList shopPlaces = new ArrayList();
-        //make request to API for food places in radius
-        foreach (string shopTag in shopTags)
-        {
-            //make search using foodtag, adding results to arraylist
-            ArrayList results = makeSearch(shopTag);
-            Console.WriteLine("total results for " + shopTag + " = " + results.Count);
-            shopPlaces.AddRange(results);
-
-        }
-        return shopPlaces;
+        string keyword = "shop";
+        //make request to API for shop places in radius
+        ArrayList results = makeSearch(keyword, pages);
+        Console.WriteLine("total results for " + keyword + " = " + results.Count);
+        return results;
     }
+
+    //returns list of place objects (for poi in specified radius around specified coordinates)
+    public ArrayList GetPOI(int pages)
+    {
+        string keyword = "tourist+attraction";
+        //make request to API for shop places in radius
+        ArrayList results = makeSearch(keyword, pages);
+        Console.WriteLine("total results for " + keyword + " = " + results.Count);
+        return results;
+    }
+
 
     //makes a standard Google Maps Nearby Search API request
-    private ArrayList makeSearch(string tag)
+    private ArrayList makeSearch(string tag, int pages)
     {
         string baseURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=";
         string reqURL = baseURL + mapsAPIKey
             + "&location=" + lat + "," + lon
             + "&radius=" + rad
-            + "&type=" + tag;
+            + "&keyword=" + tag;
         //make json request         
         var reqJson = JsonConvert.DeserializeObject<PlacesResponse>(getJson(reqURL));
-        return placesParse(reqJson);
+        return placesParse(reqJson, pages - 1); //-1 as reqJson is first page of 20
     }
 
     //called if makeSearch response has more than one page. Utilizes nextPgToken (retrieved from makeSearch response)
-    private ArrayList nextPgSearch(ArrayList rtnPlaces, string nextPgToken)
+    private ArrayList nextPgSearch(ArrayList rtnPlaces, string nextPgToken, int pages)
     {
         string baseURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=";
         string reqURL = baseURL + mapsAPIKey
             + "&pagetoken=" + nextPgToken;
         var reqJson = JsonConvert.DeserializeObject<PlacesResponse>(getJson(reqURL));
 
-        rtnPlaces.AddRange(placesParse(reqJson));
+        rtnPlaces.AddRange(placesParse(reqJson, pages - 1));
         return rtnPlaces;
     }
 
     //parses each page of Nearby Search API results. If no next page exists, returns results. Else calls nextPgSearch
-    private ArrayList placesParse(PlacesResponse parsedJson)
+    private ArrayList placesParse(PlacesResponse parsedJson, int pages)
     {
         ArrayList rtnPlaces = new ArrayList();
         //Console.WriteLine("parsing places");
@@ -249,11 +241,11 @@ class GeoInfo
         }
         //check for next page token
         string nextPgToken = parsedJson.next_page_token;
-        if (nextPgToken != null)
+        if (nextPgToken != null && pages > 0) //next page exists and still ned more resultss
         {
             //Console.WriteLine("next pg exists");
             System.Threading.Thread.Sleep(2000);
-            return nextPgSearch(rtnPlaces, nextPgToken);
+            return nextPgSearch(rtnPlaces, nextPgToken, pages);
         }
         else
         {
