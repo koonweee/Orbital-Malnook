@@ -14,6 +14,7 @@ TagManager:
   - Education
   - Shop
   - Neutral
+  - POI
   layers:
   - Default
   - TransparentFX

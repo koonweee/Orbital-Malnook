@@ -15,11 +15,12 @@ public class MalnookGEO : MonoBehaviour
     private GeoInfo geo;
     public WeatherControl weather;
     public double lat, lon, rad;
-    public Tilemap foodMap, educationMap, shopMap;
-    public Tile foodTile, educationTile, shopTile;
+    public Tilemap foodMap, educationMap, shopMap, poiMap;
+    public Tile foodTile, educationTile, shopTile, poiTile;
     public TileGenerator tileGen;
     public Canvas buildingInfo;
     public Animator generating;
+    public POIObject poiObj;
     void Start()
     {
         Debug.Log("STARTING!");
@@ -96,13 +97,15 @@ public class MalnookGEO : MonoBehaviour
 
     void InitBuildings()
     {
-        ArrayList foodList = geo.GetFood();
-        ArrayList educationList = geo.GetEdu();
-        ArrayList shopList = geo.GetShops();
+        ArrayList foodList = geo.GetFood(3);
+        ArrayList educationList = geo.GetEdu(3);
+        ArrayList shopList = geo.GetShops(3);
+        ArrayList poiList = geo.GetPOI(3);
 
         InitBuilding(foodMap, foodTile, foodList);
         InitBuilding(educationMap, educationTile, educationList);
         InitBuilding(shopMap, shopTile, shopList);
+        InitBuilding(poiMap, poiTile, poiList);
     }
 
     void InitBuilding(Tilemap tilemap, Tile tile, ArrayList list)
@@ -117,8 +120,13 @@ public class MalnookGEO : MonoBehaviour
 
             Canvas spawnedInfo = Instantiate(buildingInfo, new Vector3(tileX + 0.3f, tileY + 1.2f, 0), Quaternion.identity);
             spawnedInfo.GetComponentInChildren<Text>().text = place.name;
+
+            if (tilemap == poiMap)
+            {
+                Instantiate(poiObj, new Vector3(tileX + 0.5f, tileY + 0.5f, 0), Quaternion.identity);
+            }
             //Debug.Log(place + " at " + tileX + " ," + tileY);
-            tilemap.SetTile(new Vector3Int(tileX, tileY, 0), tile);
+            tilemap.SetTile(pos, tile);
         }
     }
 
@@ -145,7 +153,7 @@ class GeoInfo
         this.rad = initRad;
     }
 
-    //returns weather as string. Possible outputs: "Thunderstorn", "Drizzle", "Rain", "Snow", "Clear", "Clouds"
+    //returns weather as string. Possible outputs: "Thunderstorm", "Drizzle", "Rain", "Snow", "Clear", "Clouds"
     public string GetWeather()
     {
         string reqURL = "http://api.openweathermap.org/data/2.5/weather?"
