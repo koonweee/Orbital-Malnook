@@ -6319,7 +6319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad26ccb4500da77488ba5c0c8d4bb213, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMobs: 300
+  maxMobs: 200
   tileGenerator: {fileID: 1950038161}
   tilemap: {fileID: 1520554006}
   enemies:
@@ -6785,8 +6785,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d418c6c9183ac348ac824b6a86274d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  height: 300
-  width: 300
+  height: 200
+  width: 200
   numOfTileTypes: 7
   numOfTilesInType: 11
   numOfObstacles: 3
@@ -12050,7 +12050,7 @@ MonoBehaviour:
   weather: {fileID: 2118692970}
   lat: 1.2839
   lon: 103.8607
-  rad: 3000
+  rad: 2000
   foodMap: {fileID: 159467265}
   educationMap: {fileID: 1695559302}
   shopMap: {fileID: 1206827416}
