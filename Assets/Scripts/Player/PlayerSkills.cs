@@ -60,7 +60,7 @@ public class PlayerSkills : MonoBehaviour
     {
         // FOR TESTING, REPLACE WITH JOYSTICK BUTTONS.
         //if (Input.GetMouseButtonDown(1)) skillA.Activate();
-        //if (Input.GetKeyDown(KeyCode.Space)) skillB.Activate();
+        //if (Input.GetMouseButtonDown(2)) skillB.Activate();
     }
     
 }

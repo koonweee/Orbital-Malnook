@@ -22,10 +22,10 @@ public class WeatherControl : MonoBehaviour
     void Update()
     {
         // FOR TESTING.
-        if (Input.GetKeyDown(KeyCode.Q)) Sunny();
-        if (Input.GetKeyDown(KeyCode.W)) Rainy();
-        if (Input.GetKeyDown(KeyCode.E)) Cloudy();
-        if (Input.GetKeyDown(KeyCode.R)) Clear();
+        //if (Input.GetKeyDown(KeyCode.Q)) Sunny();
+        //if (Input.GetKeyDown(KeyCode.W)) Rainy();
+        //if (Input.GetKeyDown(KeyCode.E)) Cloudy();
+        //if (Input.GetKeyDown(KeyCode.R)) Clear();
     }
     public void Generate(string weather)
     {
