@@ -77,6 +77,7 @@
      <Compile Include="Assets\Scripts\Projectiles\PlayerProjectileCollision.cs" />
      <Compile Include="Assets\Scripts\Scene\Generating.cs" />
      <Compile Include="Assets\Scripts\Scene\SceneLoader.cs" />
+     <Compile Include="Assets\Scripts\Settings Menu\SettingsMenu.cs" />
      <Compile Include="Assets\Scripts\Skills\SkillMenu.cs" />
      <Compile Include="Assets\Scripts\Tiles\Fire.cs" />
      <Compile Include="Assets\Scripts\Tiles\ShallowWater.cs" />
