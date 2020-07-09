@@ -15,7 +15,8 @@ public class PlayerHealth : MonoBehaviour
     public float knockbackForce;
     public int maxHP, invulTime;
     public SceneLoader scene;
-    private int hp;
+    public int hp;
+    public PlayerSaveLoad loader;
     private bool isInvul, isDead;
     
     // Initialize HP Bar and set invuln to false.
@@ -26,6 +27,8 @@ public class PlayerHealth : MonoBehaviour
         hp = maxHP;
         isInvul = false;
         isDead = false;
+
+        loader.LoadPlayer();
     }
 
     // Updates HP Bar.
