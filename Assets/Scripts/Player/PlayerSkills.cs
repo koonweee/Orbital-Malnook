@@ -70,6 +70,7 @@ interface Skill
     void Activate();
 }
 
+
 class Shotgun : Skill
 {
     private GameObject shotgunBullet;
