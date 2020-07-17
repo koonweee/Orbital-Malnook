@@ -21,13 +21,17 @@ public class PlayerSkills : MonoBehaviour
     public GameObject iceball;
     public int iceballForce;
 
+    public GameObject lightningball;
+    public int lightningballForce;
+
     void Start()
     {
         // Init skills pool here.
         skills = new Skill[]{new Shotgun(shotgunBullet, shotgunSpread, spreadAngle, shooter, shotgunForce),
                              new Blink(gameObject, blinkSpeed, dashEffect, blinkSound),
                              new Fireball(fireball, shooter, fireballForce),
-                             new Iceball(iceball, shooter, iceballForce)};
+                             new Iceball(iceball, shooter, iceballForce),
+                             new Lightningball(lightningball, shooter, lightningballForce)};
 
         // FOR TESTING, DEFAULT SKILLS.
         LockInSkill('A', 2);
@@ -128,6 +132,24 @@ class Iceball : Skill
     public void Activate()
     {
         shooter.Shoot(iceball, 0, iceballForce);
+    }
+}
+
+class Lightningball : Skill
+{
+    private GameObject lightningball;
+    private int lightningballForce;
+    private PlayerShooting shooter;
+
+    public Lightningball(GameObject lightningball, PlayerShooting shooter, int lightningballForce)
+    {
+        this.lightningball = lightningball;
+        this.shooter = shooter;
+        this.lightningballForce = lightningballForce;
+    }
+    public void Activate()
+    {
+        shooter.Shoot(lightningball, 0, lightningballForce);
     }
 }
 

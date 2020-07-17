@@ -50,5 +50,9 @@ public class PlayerProjectileCollision : MonoBehaviour
         {
             enemy.GetComponent<EnemyState>().Slow(duration, slowAmount);
         }
+        else if (type == "lightning")
+        {
+            enemy.GetComponent<EnemyState>().Stun(duration);
+        }
     }
 }

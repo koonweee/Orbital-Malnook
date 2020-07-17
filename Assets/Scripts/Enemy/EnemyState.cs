@@ -7,7 +7,7 @@ public class EnemyState : MonoBehaviour
     public EnemyHealth health;
     public EnemyFollow follow;
     public ParticleSystem particle;
-    private bool slowed, dotted;
+    private bool slowed, dotted, stunned;
 
     void Start()
     {
@@ -29,6 +29,12 @@ public class EnemyState : MonoBehaviour
         StartCoroutine(SlowCoroutine(duration, percent));
     }
 
+    public void Stun(float duration)
+    {
+        if (stunned) return;
+        StartCoroutine(StunCoroutine(duration));
+    }
+
     IEnumerator SlowCoroutine(float duration, float percent)
     {
         slowed = true;
@@ -39,6 +45,8 @@ public class EnemyState : MonoBehaviour
         particle.Play();
 
         float initSpeed = follow.speed;
+        
+
         follow.speed *= percent;
         yield return new WaitForSeconds(duration);
         follow.speed = initSpeed;
@@ -65,6 +73,28 @@ public class EnemyState : MonoBehaviour
         }
 
         dotted = false;
+
+        particle.Stop();
+    }
+
+    IEnumerator StunCoroutine(float duration)
+    {
+        stunned = true;
+
+        // Particle effect
+        var main = particle.main;
+        main.startColor = new ParticleSystem.MinMaxGradient(Color.yellow, Color.yellow);
+        particle.Play();
+        float initSpeed = follow.speed;
+        follow.speed = 0f;
+        while (duration > 0)
+        {            
+            --duration;
+            yield return new WaitForSeconds(1f);
+        }
+        follow.speed = initSpeed;
+
+        stunned = false;
 
         particle.Stop();
     }
