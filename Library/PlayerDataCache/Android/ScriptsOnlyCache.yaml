@@ -1588,7 +1588,7 @@ ScriptsOnlyBuild:
     className: SettingsMenu
   - hash:
       serializedVersion: 2
-      Hash: 4221ff9ece8793e585222c5c4ad68616
+      Hash: 4a48acfe2bdc0a6c345df6569c238d36
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerSkills
@@ -2022,4 +2022,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/Menu.unity
   - Assets/Scenes/In Game.unity
-  playerPath: C:/Users/lamzh/Documents/Work/Orbital/Builds/v1.7.apk
+  playerPath: C:/Users/lamzh/Documents/Work/Orbital/Orbital Malnook/Build/milestone3.apk

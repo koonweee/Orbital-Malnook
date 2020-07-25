@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.IO;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
@@ -130,6 +131,17 @@ public class PlayerHealth : MonoBehaviour
 
         // Set death flag.
         isDead = true;
+
+        // Removes save file.
+        string path = Application.persistentDataPath + "/player.data";
+        try
+        {
+            File.Delete(path);
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogException(ex);
+        }
 
         // Go to menu.
         scene.LoadScene("Menu");
