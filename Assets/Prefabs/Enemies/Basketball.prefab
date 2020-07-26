@@ -220,7 +220,7 @@ Animator:
   m_GameObject: {fileID: 8733130042904531284}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3d78309256718ea4983e036091161e46, type: 2}
+  m_Controller: {fileID: 9100000, guid: 94fbcf6a6c2c0874d83dd2c0c12c6788, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -353,7 +353,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 8733130042904531283}
   follow: {fileID: 0}
-  particle: {fileID: 0}
+  particle: {fileID: 2124802786906314777, guid: 5a69bc14406c9b445a82272a13f82aee,
+    type: 3}
 --- !u!1 &8733130042906337698
 GameObject:
   m_ObjectHideFlags: 0
